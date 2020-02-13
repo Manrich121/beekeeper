@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'left'
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(4, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -47,33 +47,35 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     userSelect: 'none',
     textTransform: 'uppercase',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   text: {
     userSelect: 'none',
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
     textAlign: 'center'
   },
-  content: {
-    margin: theme.spacing(0, 5)
+  center: {
+    display: 'flex',
+    justifyContent: 'center'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    padding: theme.spacing(1, 8),
     display: 'flex',
     flexDirection: 'column'
   },
-  submit: {
+  button: {
     textTransform: 'uppercase',
     margin: theme.spacing(3, 0, 2),
     color: theme.palette.text.hint,
-    fontWeight: 600
+    fontWeight: 600,
+    '&:hover': {
+      backgroundColor: '#E6BC33'
+    }
   },
   title: {
     userSelect: 'none',
-    display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
     fontWeight: 900,
     color: theme.palette.text.hint,
     letterSpacing: 2
@@ -91,10 +93,13 @@ export default function StayInTouch() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
+  const handleSubmit = (event: any) => {
+    console.log('event', event);
+  };
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid item xs={12} sm={8} md={8} className={classes.image}>
+      <Grid item xs={12} md={7} className={classes.image}>
         <Box className={classes.paper} mt={10}>
           <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
             BEEKEEPING
@@ -104,22 +109,30 @@ export default function StayInTouch() {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
+      <Grid item xs={12} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
-          <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
+          <Grid container md={12} alignContent={'center'} justify={'center'} direction={'column'}>
             <Typography component="h1" variant="body1" className={classes.subtext}>
-              Beekeeper Calendar
+              The South African Beekeeping Calender.
             </Typography>
             <Typography component="h1" variant="body2" className={classes.text}>
-              The Beekeeper Calendar for South Africans is your guide to seasonal changes affecting your swarms.
+              <b>-Optimising your Beekeeping potential-</b> <br />
+              Are you familiar with the seasonal forage opportunities in your area? Get a sense of the traditional and
+              changing migratory patterns our beekeepers employ to stay ahead of the nectar flow windows. <br /> <br />
+              <b>How does it work?</b> <br />
+              The Beekeeping calendar is a free tool updated annually, to reflect current and changing forage patterns
+              pursued by beekeepers in their quest to optimize the production potential of their colonies.
+              <br /> <br />
+              <b>How much does it cost?</b> <br />
+              Absolutely and always free. The calender is made possible by direct input from our beekeeping industry.
             </Typography>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" className={classes.submit}>
+          <Button type="button" variant="contained" color="primary" className={classes.button}>
             Download Calendar
           </Button>
-          <Box mt={3} />
-          <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
+          <Box mt={2} />
+          <Grid container md={12} alignContent={'center'} justify={'center'} direction={'column'}>
             <Typography component="h1" variant="body1" className={classes.subtext}>
               Stay updated
             </Typography>
@@ -128,22 +141,29 @@ export default function StayInTouch() {
             </Typography>
           </Grid>
           <form className={classes.form}>
-            <TextField variant="outlined" margin="normal" required fullWidth id="name" label="Name" name="name" />
+            <TextField variant="outlined" margin="normal" required id="name" label="Name" name="name" size={'small'} />
             <TextField
               variant="outlined"
               margin="normal"
               required
-              fullWidth
               id="email"
               type={'email'}
               label="Email Address"
               name="email"
+              size={'small'}
             />
-            <Button type="submit" variant="contained" color="primary" className={classes.submit}>
-              Submit details
-            </Button>
+            <div className={classes.center}>
+              <Button
+                type="button"
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={handleSubmit}>
+                Submit details
+              </Button>
+            </div>
           </form>
-          <Box mt={5}>
+          <Box mt={4}>
             <Copyright />
           </Box>
         </div>
