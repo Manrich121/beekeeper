@@ -1,131 +1,161 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.beekeeper.co.za/">
+        Beekeeper
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        height: '100vh',
-    },
-    image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor:
-            theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-    paper: {
-        margin: theme.spacing(8, 4),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
+  root: {
+    height: '100vh'
+  },
+  image: {
+    backgroundImage: 'url("cover2.jpg")',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+    backgroundSize: 'cover',
+    backgroundPosition: 'left'
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  icon: {
+    height: 40
+  },
+  subtext: {
+    marginTop: theme.spacing(2),
+    userSelect: 'none',
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
+  },
+  text: {
+    userSelect: 'none',
+    marginTop: theme.spacing(2),
+    textAlign: 'center'
+  },
+  content: {
+    margin: theme.spacing(0, 5)
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  submit: {
+    textTransform: 'uppercase',
+    margin: theme.spacing(3, 0, 2),
+    color: theme.palette.text.hint,
+    fontWeight: 600
+  },
+  title: {
+    userSelect: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontWeight: 900,
+    color: theme.palette.text.hint,
+    letterSpacing: 2
+  },
+  subtitle: {
+    color: theme.palette.text.hint,
+    fontWeight: 500,
+    textTransform: 'uppercase',
+    userSelect: 'none'
+  }
 }));
 
-export default function SignInSide() {
-    const classes = useStyles();
+export default function StayInTouch() {
+  const classes = useStyles();
 
-    return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Sign In
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                        <Box mt={5}>
-                            <Copyright />
-                        </Box>
-                    </form>
-                </div>
+  return (
+    <Grid container component="main" className={classes.root} direction={'row'}>
+      <CssBaseline />
+      <Grid item xs={false} sm={8} md={8} className={classes.image}>
+        <Box className={classes.paper} mt={10}>
+          <Typography component={'h1'} variant={'h2'} className={classes.title}>
+            BEEKEEPING
+          </Typography>
+          <Typography component={'h2'} variant={'h5'} className={classes.subtitle}>
+            In South Africa
+          </Typography>
+        </Box>
+      </Grid>
+      <Grid item xs={false} sm={8} md={4} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
+          <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
+            <Typography component="h1" variant="body1" className={classes.subtext}>
+              Beekeeper Calendar
+            </Typography>
+            <Typography component="h1" variant="body2" className={classes.text}>
+              The Beekeeper Calendar for South Africans is your guide to seasonal changes affecting your swarms.
+            </Typography>
+          </Grid>
+          <Button type="submit" variant="contained" color="primary" className={classes.submit}>
+            Download Calendar
+          </Button>
+          <Box mt={3}>
+            <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
+              <Typography component="h1" variant="body1" className={classes.subtext}>
+                Stay updated
+              </Typography>
+              <Typography component="h1" variant="body2" className={classes.text}>
+                Complete your contact details to receive regular updates via email from the beekeeping community.
+              </Typography>
             </Grid>
-        </Grid>
-    );
+          </Box>
+          <form className={classes.form}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              type={'email'}
+              label="Email Address"
+              name="email"
+              autoFocus
+            />
+            <Button type="submit" variant="contained" color="primary" className={classes.submit}>
+              Submit details
+            </Button>
+          </form>
+          <Box mt={5}>
+            <Copyright />
+          </Box>
+        </div>
+      </Grid>
+    </Grid>
+  );
 }

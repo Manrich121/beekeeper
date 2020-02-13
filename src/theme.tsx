@@ -3,20 +3,26 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 // A custom theme for this app
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Quicksand'
+  },
   palette: {
+    text: {
+      hint: '#FFFFFF'
+    },
     primary: {
-      main: '#556cd6',
+      main: '#FFD039'
     },
     secondary: {
-      main: '#19857b',
+      main: '#F9EFD4'
     },
     error: {
-      main: red.A400,
+      main: red.A400
     },
     background: {
-      default: '#fff',
-    },
-  },
+      default: '#fff'
+    }
+  }
 });
 
 export default theme;
