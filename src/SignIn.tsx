@@ -7,7 +7,8 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Copyright() {
   return (
@@ -87,13 +88,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function StayInTouch() {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
       <Grid item xs={12} sm={8} md={8} className={classes.image}>
         <Box className={classes.paper} mt={10}>
-          <Typography component={'h1'} variant={'h2'} className={classes.title}>
+          <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
             BEEKEEPING
           </Typography>
           <Typography component={'h2'} variant={'h5'} className={classes.subtitle}>
