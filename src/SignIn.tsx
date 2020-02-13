@@ -91,7 +91,7 @@ export default function StayInTouch() {
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid item xs={false} sm={8} md={8} className={classes.image}>
+      <Grid item xs={12} sm={8} md={8} className={classes.image}>
         <Box className={classes.paper} mt={10}>
           <Typography component={'h1'} variant={'h2'} className={classes.title}>
             BEEKEEPING
@@ -101,7 +101,7 @@ export default function StayInTouch() {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={false} sm={8} md={4} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
           <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
@@ -115,16 +115,15 @@ export default function StayInTouch() {
           <Button type="submit" variant="contained" color="primary" className={classes.submit}>
             Download Calendar
           </Button>
-          <Box mt={3}>
-            <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
-              <Typography component="h1" variant="body1" className={classes.subtext}>
-                Stay updated
-              </Typography>
-              <Typography component="h1" variant="body2" className={classes.text}>
-                Complete your contact details to receive regular updates via email from the beekeeping community.
-              </Typography>
-            </Grid>
-          </Box>
+          <Box mt={3} />
+          <Grid container md={10} alignContent={'center'} justify={'center'} className={classes.content}>
+            <Typography component="h1" variant="body1" className={classes.subtext}>
+              Stay updated
+            </Typography>
+            <Typography component="h1" variant="body2" className={classes.text}>
+              Complete your contact details to receive regular updates via email from the beekeeping community.
+            </Typography>
+          </Grid>
           <form className={classes.form}>
             <TextField
               variant="outlined"
