@@ -128,16 +128,7 @@ export default function StayInTouch() {
             </Typography>
           </Grid>
           <form className={classes.form}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
-              name="name"
-              autoFocus
-            />
+            <TextField variant="outlined" margin="normal" required fullWidth id="name" label="Name" name="name" />
             <TextField
               variant="outlined"
               margin="normal"
@@ -147,7 +138,6 @@ export default function StayInTouch() {
               type={'email'}
               label="Email Address"
               name="email"
-              autoFocus
             />
             <Button type="submit" variant="contained" color="primary" className={classes.submit}>
               Submit details
