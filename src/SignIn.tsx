@@ -61,9 +61,9 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    padding: theme.spacing(1, 8),
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   button: {
     textTransform: 'uppercase',
@@ -112,7 +112,7 @@ export default function StayInTouch() {
       <Grid item xs={12} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
-          <Grid container md={12} alignContent={'center'} justify={'center'} direction={'column'}>
+          <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
             <Typography component="h1" variant="body1" className={classes.subtext}>
               The South African Beekeeping Calender.
             </Typography>
@@ -132,7 +132,7 @@ export default function StayInTouch() {
             Download Calendar
           </Button>
           <Box mt={2} />
-          <Grid container md={12} alignContent={'center'} justify={'center'} direction={'column'}>
+          <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
             <Typography component="h1" variant="body1" className={classes.subtext}>
               Stay updated
             </Typography>
@@ -141,20 +141,30 @@ export default function StayInTouch() {
             </Typography>
           </Grid>
           <form className={classes.form}>
-            <TextField variant="outlined" margin="normal" required id="name" label="Name" name="name" size={'small'} />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              id="email"
-              type={'email'}
-              label="Email Address"
-              name="email"
-              size={'small'}
-            />
+            <Grid item className={classes.center} direction={'column'}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="name"
+                label="Name"
+                name="name"
+                size={'small'}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                id="email"
+                type={'email'}
+                label="Email Address"
+                name="email"
+                size={'small'}
+              />
+            </Grid>
             <div className={classes.center}>
               <Button
-                type="button"
+                type="submit"
                 variant="contained"
                 color="primary"
                 className={classes.button}
