@@ -31,11 +31,9 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: 'url("cover2.jpg")',
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-    backgroundSize: 'cover',
-    backgroundPosition: 'left'
+    backgroundSize: 'cover'
   },
   paper: {
-    margin: theme.spacing(4, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -72,7 +70,8 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     '&:hover': {
       backgroundColor: '#E6BC33'
-    }
+    },
+    maxWidth: theme.spacing(25)
   },
   title: {
     userSelect: 'none',
@@ -99,8 +98,8 @@ export default function StayInTouch() {
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid item xs={12} md={7} className={classes.image}>
-        <Box className={classes.paper} mt={10}>
+      <Grid item xs={12} md={6} className={classes.image}>
+        <Box className={classes.paper} marginY={matches ? 10 : 5}>
           <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
             BEEKEEPING
           </Typography>
@@ -109,8 +108,8 @@ export default function StayInTouch() {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
+      <Grid item xs={12} md={6} component={Paper} elevation={6} square>
+        <Box className={classes.paper} mt={5} marginX={matches ? 10 : 5}>
           <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
           <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
             <Typography component="h1" variant="body1" className={classes.subtext}>
@@ -128,7 +127,7 @@ export default function StayInTouch() {
               Absolutely and always free. The calender is made possible by direct input from our beekeeping industry.
             </Typography>
           </Grid>
-          <Button type="button" variant="contained" color="primary" className={classes.button}>
+          <Button type="button" variant="contained" color="primary" fullWidth={true} className={classes.button}>
             Download Calendar
           </Button>
           <Box mt={2} />
@@ -141,42 +140,41 @@ export default function StayInTouch() {
             </Typography>
           </Grid>
           <form className={classes.form}>
-            <Grid item className={classes.center} direction={'column'}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="name"
-                label="Name"
-                name="name"
-                size={'small'}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                id="email"
-                type={'email'}
-                label="Email Address"
-                name="email"
-                size={'small'}
-              />
-            </Grid>
-            <div className={classes.center}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={handleSubmit}>
-                Submit details
-              </Button>
-            </div>
+            <TextField
+              variant="outlined"
+              fullWidth={true}
+              margin="normal"
+              required
+              id="name"
+              label="Name"
+              name="name"
+              size={'small'}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth={true}
+              required
+              id="email"
+              type={'email'}
+              label="Email Address"
+              name="email"
+              size={'small'}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth={true}
+              className={classes.button}
+              onClick={handleSubmit}>
+              Submit details
+            </Button>
           </form>
           <Box mt={4}>
             <Copyright />
           </Box>
-        </div>
+        </Box>
       </Grid>
     </Grid>
   );
