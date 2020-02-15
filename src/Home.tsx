@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import ButtonWidget from './widgets/ButtonWidget';
 import StayInTouchForm from './widgets/StayInTouchForm';
 import CalendarDescription from './widgets/CalendarDescription';
 import ContentPanel from './widgets/ContentPanel';
@@ -61,14 +60,7 @@ export default function Home() {
           </Typography>
         </Box>
       </Grid>
-      <ContentPanel>
-        <Box className={classes.paper} marginX={matches ? 10 : 5}>
-          <CalendarDescription />
-          <ButtonWidget label={'Download Calendar'} type="button" color="primary" />
-          <Box mt={2} />
-          <StayInTouchForm />
-        </Box>
-      </ContentPanel>
+      <ContentPanel slot1={<CalendarDescription />} slot2={<StayInTouchForm />} />
     </Grid>
   );
 }

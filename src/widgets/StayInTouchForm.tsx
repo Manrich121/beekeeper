@@ -13,31 +13,36 @@ const gsheet = Bearer.integration('google_sheets');
 
 const useStyles = makeStyles(theme => ({
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   }
 }));
 
-export default function StayInTouchForm() {
+const DEFAULT_PROVENCE = 'Western Cape';
+export default function StayInTouchForm(props: { provence?: string }) {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const classes = useStyles();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const postToGoogleSheets = (values: string[]) => {
     gsheet
       .auth(authToken)
       .post(`${spreadsheetId}/values/A1:append`, {
-        body: { values: [[fullname, email]] },
+        body: { values: [values] },
         query: { valueInputOption: 'RAW' }
       })
       .then(() => {
         console.log('Saved!');
-        setEmail('');
-        setFullname('');
       });
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    postToGoogleSheets([fullname, props.provence || DEFAULT_PROVENCE, email]);
+    setEmail('');
+    setFullname('');
   };
 
   return (
