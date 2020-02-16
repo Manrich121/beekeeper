@@ -4,24 +4,11 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import HeadingWidget from './HeadingWidget';
 import ButtonWidget from './ButtonWidget';
+import { BASE_CALENDARS_PATH, CalendarManifest } from '../App';
 
-enum PROVINCES {
-  EASTERN_CAPE = 'eastern cape',
-  FREESTATE = 'freestate',
-  GAUTENG = 'gauteng',
-  KZN = 'kzn',
-  LIMPOPO = 'limpopo',
-  MPUMALANGA = 'mpumalanga',
-  NORTHERN_CAPE = 'northern cape',
-  NORTH_WEST = 'north west',
-  WESTERN_CAPE = 'western cape'
-}
-
-const BASE_PATH = '/calendars';
-const FILE_NAME_PART = 'Beekeeping Forage Calendar 2020.pdf';
-
-export default function DownloadWidget() {
+export default function DownloadWidget(props: { manifest: CalendarManifest | null }) {
   const [provence, setProvence] = useState('');
+
   const classes = makeStyles(theme => ({
     formControl: {
       margin: theme.spacing(1),
@@ -39,18 +26,25 @@ export default function DownloadWidget() {
     }
   }))();
 
-  const getOptions = (): JSX.Element[] => {
-    return Object.values(PROVINCES).map(p => {
+  const getOptions = (): JSX.Element[] | null => {
+    if (!props.manifest) {
+      return null;
+    }
+    return props.manifest.calendars.map(p => {
       return (
-        <MenuItem key={p} value={p}>
-          {p.toUpperCase()}
+        <MenuItem key={p.name} value={p.name}>
+          {p.name.toUpperCase()}
         </MenuItem>
       );
     });
   };
 
   const resolveFilePath = (): string => {
-    return `${BASE_PATH}/${provence.toUpperCase()} ${FILE_NAME_PART}`;
+    if (!props.manifest) {
+      return '';
+    }
+    const prov = props.manifest.calendars.find(c => c.name == provence);
+    return prov ? `${BASE_CALENDARS_PATH}/${prov.file}` : '';
   };
 
   return (
@@ -67,7 +61,7 @@ export default function DownloadWidget() {
           {getOptions()}
         </Select>
       </FormControl>
-      {provence && (
+      {provence && props.manifest && (
         <ButtonWidget color={'primary'} label={'Download Calendar'}>
           <a href={resolveFilePath()} download className={classes.button} style={{ position: 'absolute' }} />
         </ButtonWidget>
