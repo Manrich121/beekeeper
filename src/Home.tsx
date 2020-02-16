@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import StayInTouchForm from './widgets/StayInTouchForm';
@@ -21,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundImage: 'url("cover2.jpg")',
+    backgroundImage: 'url("cover2000x1300.jpg")',
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
     backgroundSize: 'cover'
@@ -31,9 +30,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center'
   },
-  center: {
-    display: 'flex',
-    justifyContent: 'center'
+  logo: {
+    width: '100%',
+    borderRadius: 3
   },
   title: {
     userSelect: 'none',
@@ -59,13 +58,8 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
       <Grid item xs={12} md={6} className={classes.image}>
-        <Box className={classes.paper} marginY={matches ? 10 : 5}>
-          <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
-            BEEKEEPING
-          </Typography>
-          <Typography component={'h2'} variant={'h5'} className={classes.subtitle}>
-            In South Africa
-          </Typography>
+        <Box marginX={2}>
+          <img alt={'logo'} src={'Bee logo.png'} className={classes.logo} />
         </Box>
         <QuoteWidget largeScreen={matches} breakpoint={useMediaQuery(theme.breakpoints.up('md'))} />
       </Grid>

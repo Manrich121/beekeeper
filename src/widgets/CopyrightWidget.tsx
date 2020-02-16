@@ -10,15 +10,11 @@ export default function CopyrightWidget(props: { smallScreen: boolean }) {
       display: 'flex',
       flexDirection: props.smallScreen ? 'column' : 'row',
       alignItems: 'center'
-    },
-    logo: {
-      height: theme.spacing(5)
     }
   }))();
 
   return (
     <Box marginY={4} className={classes.container}>
-      <img alt={'logo'} src={'logo.jpeg'} className={classes.logo} />
       <Typography variant="body2" color="textSecondary" align="center" style={{ userSelect: 'none' }}>
         {'Copyright © '}
         <Link color="inherit" href="/">

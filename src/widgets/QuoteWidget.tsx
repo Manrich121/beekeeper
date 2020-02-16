@@ -18,7 +18,8 @@ export default function QuoteWidget(props: { largeScreen: boolean; breakpoint: b
     quote: {
       margin: theme.spacing(1, 2),
       color: theme.palette.text.primary,
-      textAlign: 'center'
+      textAlign: 'center',
+      userSelect: 'none'
     }
   }))();
   return (
