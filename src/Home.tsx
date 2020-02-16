@@ -78,7 +78,6 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
           </>
         }
       />
-      {/*<ContentPanel slot1={} slot2={<StayInTouchForm />} />*/}
     </Grid>
   );
 }
