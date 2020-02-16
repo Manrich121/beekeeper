@@ -1,15 +1,14 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import HeadingWidget from './HeadingWidget';
 import ButtonWidget from './ButtonWidget';
 import { BASE_CALENDARS_PATH, CalendarManifest } from '../App';
 
 export default function DownloadWidget(props: {
   manifest: CalendarManifest | null;
-  provence: string;
-  onProvenceChange: (selected: string) => void;
+  province: string;
+  onProvinceChange: (selected: string) => void;
 }) {
   const classes = makeStyles(theme => ({
     formControl: {
@@ -45,24 +44,28 @@ export default function DownloadWidget(props: {
     if (!props.manifest) {
       return '';
     }
-    const prov = props.manifest.calendars.find(c => c.name == props.provence);
+    const prov = props.manifest.calendars.find(c => c.name == props.province);
     return prov ? `${BASE_CALENDARS_PATH}/${prov.file}` : '';
   };
 
   return (
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
       <FormControl className={classes.formControl}>
-        <InputLabel id="provence-select-label">Select Provence</InputLabel>
+        <InputLabel id="province-select-label">Select Province</InputLabel>
         <Select
-          labelId="provence"
-          id="provence-select"
+          labelId="province"
+          id="province-select"
           required={true}
-          value={props.provence}
-          onChange={e => props.onProvenceChange(e.target.value as string)}>
+          value={props.province}
+          onChange={e => props.onProvinceChange(e.target.value as string)}>
           {getOptions()}
         </Select>
       </FormControl>
-      <ButtonWidget color={'primary'} label={'Download Calendar'} disabled={!(props.manifest && props.provence)}>
+      <ButtonWidget
+        color={'primary'}
+        label={'Download Calendar'}
+        disabled={!(props.manifest && props.province)}
+        style={{ alignSelf: 'center' }}>
         <a href={resolveFilePath()} download className={classes.button} style={{ position: 'absolute' }} />
       </ButtonWidget>
     </Grid>

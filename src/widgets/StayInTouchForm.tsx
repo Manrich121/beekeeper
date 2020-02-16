@@ -20,8 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DEFAULT_PROVENCE = 'Western Cape';
-export default function StayInTouchForm(props: { provence?: string }) {
+export default function StayInTouchForm(props: { province: string }) {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const classes = useStyles();
@@ -40,7 +39,7 @@ export default function StayInTouchForm(props: { provence?: string }) {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    postToGoogleSheets([fullname, props.provence || DEFAULT_PROVENCE, email]);
+    postToGoogleSheets([fullname, props.province || '', email]);
     setEmail('');
     setFullname('');
   };

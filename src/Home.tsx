@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Home(props: { manifest: CalendarManifest | null }) {
-  const [provence, setProvence] = useState('');
+  const [province, setProvince] = useState('');
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -69,12 +69,12 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
           <>
             <DownloadWidget
               manifest={props.manifest}
-              provence={provence}
-              onProvenceChange={selected => {
-                setProvence(selected);
+              province={province}
+              onProvinceChange={selected => {
+                setProvince(selected);
               }}
             />
-            <StayInTouchForm />
+            <StayInTouchForm province={province} />
           </>
         }
       />
