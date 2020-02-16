@@ -11,9 +11,8 @@ export default function CalendarDescription() {
         <b>-Optimising your Beekeeping potential-</b> <br />
         Are you familiar with the seasonal forage opportunities in your area? Get a sense of the traditional and
         changing migratory patterns our beekeepers employ to stay ahead of the nectar flow windows. <br /> <br />
-        <b>How does it work?</b> <br />
-        The Beekeeping calendar is a free tool updated annually, to reflect current and changing forage patterns pursued
-        by beekeepers in their quest to optimize the production potential of their colonies.
+        <b>How much does it cost?</b> <br />
+        Absolutely and always free. The calender is made possible by direct input from our beekeeping industry.
       </TextWidget>
     </Grid>
   );
