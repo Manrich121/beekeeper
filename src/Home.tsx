@@ -59,7 +59,7 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
       <CssBaseline />
       <Grid item xs={12} md={6} className={classes.image}>
         <Box marginX={2}>
-          <img alt={'logo'} src={'Bee logo.png'} className={classes.logo} />
+          <img alt={'logo'} src={'bee_logo.png'} className={classes.logo} />
         </Box>
         <QuoteWidget largeScreen={matches} breakpoint={useMediaQuery(theme.breakpoints.up('md'))} />
       </Grid>

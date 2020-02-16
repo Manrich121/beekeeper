@@ -44,7 +44,7 @@ export default function DownloadWidget(props: {
     if (!props.manifest) {
       return '';
     }
-    const prov = props.manifest.calendars.find(c => c.name == props.province);
+    const prov = props.manifest.calendars.find(c => c.name === props.province);
     return prov ? `${BASE_CALENDARS_PATH}/${prov.file}` : '';
   };
 
