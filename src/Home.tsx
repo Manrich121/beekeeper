@@ -10,12 +10,15 @@ import CalendarDescription from './widgets/CalendarDescription';
 import ContentPanel from './widgets/ContentPanel';
 import DownloadWidget from './widgets/DownloadWidget';
 import { CalendarManifest } from './App';
+import QuoteWidget from './widgets/QuoteWidget';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh'
+    height: '100vh',
+    position: 'relative'
   },
   image: {
+    display: 'flex',
     backgroundImage: 'url("cover2.jpg")',
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
@@ -53,7 +56,14 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid item xs={12} md={6} className={classes.image}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        className={classes.image}
+        alignItems={'center'}
+        justify={'space-between'}
+        direction={'column'}>
         <Box className={classes.paper} marginY={matches ? 10 : 5}>
           <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
             BEEKEEPING
@@ -62,6 +72,7 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
             In South Africa
           </Typography>
         </Box>
+        <QuoteWidget largeScreen={matches} breakpoint={useMediaQuery(theme.breakpoints.up('md'))} />
       </Grid>
       <ContentPanel
         slot1={<CalendarDescription />}
