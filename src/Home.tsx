@@ -8,6 +8,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import StayInTouchForm from './widgets/StayInTouchForm';
 import CalendarDescription from './widgets/CalendarDescription';
 import ContentPanel from './widgets/ContentPanel';
+import DownloadWidget from './widgets/DownloadWidget';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,7 +61,8 @@ export default function Home() {
           </Typography>
         </Box>
       </Grid>
-      <ContentPanel slot1={<CalendarDescription />} slot2={<StayInTouchForm />} />
+      {/*<ContentPanel slot1={<CalendarDescription />} slot2={<StayInTouchForm />} />*/}
+      <ContentPanel slot1={<DownloadWidget />} slot2={<StayInTouchForm />} />
     </Grid>
   );
 }
