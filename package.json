@@ -2,8 +2,9 @@
   "name": "beekeeper",
   "version": "0.0.0",
   "private": true,
-  "homepage": "http://manrich121.github.io/beekeeper",
+  "homepage": "https://manrich121.github.io",
   "dependencies": {
+    "@bearer/node": "^2.2.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@material-ui/core": "latest",
