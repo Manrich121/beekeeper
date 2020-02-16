@@ -23,12 +23,7 @@ export interface ButtonWidgetProps extends ButtonProps {
 export default function ButtonWidget(props: ButtonWidgetProps) {
   const classes = useStyles();
   return (
-    <Button
-      type={props.type}
-      variant="contained"
-      color={props.color || 'primary'}
-      fullWidth={true}
-      className={classes.button}>
+    <Button {...props} variant="contained" color={props.color || 'primary'} fullWidth={true} className={classes.button}>
       {props.label}
       {props.children}
     </Button>

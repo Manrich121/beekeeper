@@ -77,7 +77,7 @@ export default function StayInTouchForm(props: { provence?: string }) {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <ButtonWidget label={'Submit details'} type="submit" color={'primary'} />
+        <ButtonWidget label={'Submit details'} type="submit" color={'primary'} disabled={!(fullname && email)} />
       </form>
     </Grid>
   );

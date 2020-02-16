@@ -6,9 +6,9 @@ import { Box } from '@material-ui/core';
 export default function CopyrightWidget() {
   return (
     <Box marginY={4}>
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body2" color="textSecondary" align="center" style={{ userSelect: 'none' }}>
         {'Copyright © '}
-        <Link color="inherit" href="beekeeper.co.za/">
+        <Link color="inherit" href="/">
           Beekeeper.co.za
         </Link>{' '}
         {new Date().getFullYear()}

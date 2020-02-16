@@ -6,13 +6,15 @@ import HeadingWidget from './HeadingWidget';
 import ButtonWidget from './ButtonWidget';
 import { BASE_CALENDARS_PATH, CalendarManifest } from '../App';
 
-export default function DownloadWidget(props: { manifest: CalendarManifest | null }) {
-  const [provence, setProvence] = useState('');
-
+export default function DownloadWidget(props: {
+  manifest: CalendarManifest | null;
+  provence: string;
+  onProvenceChange: (selected: string) => void;
+}) {
   const classes = makeStyles(theme => ({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120
+      minWidth: 200
     },
     form: {
       width: '100%',
@@ -43,29 +45,26 @@ export default function DownloadWidget(props: { manifest: CalendarManifest | nul
     if (!props.manifest) {
       return '';
     }
-    const prov = props.manifest.calendars.find(c => c.name == provence);
+    const prov = props.manifest.calendars.find(c => c.name == props.provence);
     return prov ? `${BASE_CALENDARS_PATH}/${prov.file}` : '';
   };
 
   return (
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
-      <HeadingWidget>Select your provence</HeadingWidget>
       <FormControl className={classes.formControl}>
-        <InputLabel id="provence-select-label">Provence</InputLabel>
+        <InputLabel id="provence-select-label">Select Provence</InputLabel>
         <Select
           labelId="provence"
           id="provence-select"
           required={true}
-          value={provence}
-          onChange={e => setProvence(e.target.value as string)}>
+          value={props.provence}
+          onChange={e => props.onProvenceChange(e.target.value as string)}>
           {getOptions()}
         </Select>
       </FormControl>
-      {provence && props.manifest && (
-        <ButtonWidget color={'primary'} label={'Download Calendar'}>
-          <a href={resolveFilePath()} download className={classes.button} style={{ position: 'absolute' }} />
-        </ButtonWidget>
-      )}
+      <ButtonWidget color={'primary'} label={'Download Calendar'} disabled={!(props.manifest && props.provence)}>
+        <a href={resolveFilePath()} download className={classes.button} style={{ position: 'absolute' }} />
+      </ButtonWidget>
     </Grid>
   );
 }
