@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +8,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import StayInTouchForm from './widgets/StayInTouchForm';
 import CalendarDescription from './widgets/CalendarDescription';
 import ContentPanel from './widgets/ContentPanel';
+import DownloadWidget from './widgets/DownloadWidget';
+import { CalendarManifest } from './App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,7 +44,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Home() {
+export default function Home(props: { manifest: CalendarManifest | null }) {
+  const [provence, setProvence] = useState('');
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -60,7 +63,21 @@ export default function Home() {
           </Typography>
         </Box>
       </Grid>
-      <ContentPanel slot1={<CalendarDescription />} slot2={<StayInTouchForm />} />
+      <ContentPanel
+        slot1={<CalendarDescription />}
+        slot2={
+          <>
+            <DownloadWidget
+              manifest={props.manifest}
+              provence={provence}
+              onProvenceChange={selected => {
+                setProvence(selected);
+              }}
+            />
+            <StayInTouchForm />
+          </>
+        }
+      />
     </Grid>
   );
 }

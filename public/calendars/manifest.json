@@ -1,0 +1,49 @@
+{
+  "name": "Calenders",
+  "calendars": [
+    {
+      "name": "Eastern Cape",
+      "file": "EASTERN CAPE Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Freestate",
+      "file": "FREESTATE Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Gauteng",
+      "file": "GAUTENG Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "KZN",
+      "file": "KZN Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Limpopo",
+      "file": "LIMPOPO Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Mpumalanga",
+      "file": "MPUMALANGA Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Northern_Cape",
+      "file": "NORTHERN_CAPE Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },{
+      "name": "North West",
+      "file": "NORTH_WEST Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "Western Cape",
+      "file": "WESTERN CAPE Beekeeping Forage Calendar 2020.pdf",
+      "additionalInfo": {}
+    }
+  ]
+}

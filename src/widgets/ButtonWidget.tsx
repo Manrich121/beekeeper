@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Button, { ButtonProps } from '@material-ui/core/Button';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -17,13 +17,15 @@ const useStyles = makeStyles(theme => ({
 
 export interface ButtonWidgetProps extends ButtonProps {
   label?: string;
+  children?: ReactNode;
 }
 
 export default function ButtonWidget(props: ButtonWidgetProps) {
   const classes = useStyles();
   return (
-    <Button type={props.type} variant="contained" color={props.color} fullWidth={true} className={classes.button}>
+    <Button {...props} variant="contained" color={props.color || 'primary'} fullWidth={true} className={classes.button}>
       {props.label}
+      {props.children}
     </Button>
   );
 }
