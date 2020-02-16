@@ -6,6 +6,11 @@ import HeadingWidget from './HeadingWidget';
 import TextWidget from './TextWidget';
 import Grid from '@material-ui/core/Grid';
 
+const Bearer = require('@bearer/node')(process.env.REACT_APP_BEARER_API_KEY);
+const spreadsheetId = process.env.REACT_APP_SHEET_ID;
+const authToken = process.env.REACT_APP_GOOGLE_AUTH_ID;
+const gsheet = Bearer.integration('google_sheets');
+
 const useStyles = makeStyles(theme => ({
   form: {
     width: '100%',
@@ -17,26 +22,20 @@ const useStyles = makeStyles(theme => ({
 
 const DEFAULT_PROVENCE = 'Western Cape';
 export default function StayInTouchForm(props: { provence?: string }) {
-  console.log('process.env', process.env);
-  // const Bearer = require('@bearer/node')(process.env.REACT_APP_BEARER_API_KEY);
-  // const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-  // const authToken = process.env.REACT_APP_GOOGLE_AUTH_ID;
-  // const gsheet = Bearer.integration('google_sheets');
-
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const classes = useStyles();
 
   const postToGoogleSheets = (values: string[]) => {
-    // gsheet
-    //   .auth(authToken)
-    //   .post(`${spreadsheetId}/values/A1:append`, {
-    //     body: { values: [values] },
-    //     query: { valueInputOption: 'RAW' }
-    //   })
-    //   .then(() => {
-    //     console.log('Saved!');
-    //   });
+    gsheet
+      .auth(authToken)
+      .post(`${spreadsheetId}/values/A1:append`, {
+        body: { values: [values] },
+        query: { valueInputOption: 'RAW' }
+      })
+      .then(() => {
+        console.log('Saved!');
+      });
   };
 
   const handleSubmit = (event: React.FormEvent) => {
