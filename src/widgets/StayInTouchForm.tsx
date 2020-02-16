@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 const DEFAULT_PROVENCE = 'Western Cape';
 export default function StayInTouchForm(props: { provence?: string }) {
+  console.log('process.env', process.env);
   // const Bearer = require('@bearer/node')(process.env.REACT_APP_BEARER_API_KEY);
   // const spreadsheetId = process.env.REACT_APP_SHEET_ID;
   // const authToken = process.env.REACT_APP_GOOGLE_AUTH_ID;
