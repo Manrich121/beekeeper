@@ -43,13 +43,13 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
   return (
     <Grid item xs={12} md={6} component={Paper} elevation={6} square className={classes.contentPanel}>
       <Box className={classes.paper} marginX={matches ? 10 : 5}>
-        <Box mt={matches ? 5 : 3} className={classes.content}>
+        <Box mt={matches ? 4 : 3} className={classes.content}>
           <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
           {props.slot1}
         </Box>
         {getSlot2()}
       </Box>
-      <CopyrightWidget />
+      <CopyrightWidget smallScreen={!matches} />
     </Grid>
   );
 }

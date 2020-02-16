@@ -4,10 +4,11 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-export default function CopyrightWidget() {
+export default function CopyrightWidget(props: { smallScreen: boolean }) {
   const classes = makeStyles(theme => ({
     container: {
       display: 'flex',
+      flexDirection: props.smallScreen ? 'column' : 'row',
       alignItems: 'center'
     },
     logo: {

@@ -19,6 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     backgroundImage: 'url("cover2.jpg")',
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
@@ -56,14 +58,7 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid
-        item
-        xs={12}
-        md={6}
-        className={classes.image}
-        alignItems={'center'}
-        justify={'space-between'}
-        direction={'column'}>
+      <Grid item xs={12} md={6} className={classes.image}>
         <Box className={classes.paper} marginY={matches ? 10 : 5}>
           <Typography component={'h1'} variant={matches ? 'h2' : 'h4'} className={classes.title}>
             BEEKEEPING
