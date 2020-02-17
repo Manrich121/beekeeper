@@ -20,7 +20,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundImage: 'url("cover2000x1300.jpg")',
+    backgroundImage: 'url("https://source.unsplash.com/ylHc_HR-MQQ/800x1200")',
+    [theme.breakpoints.down('sm')]: {
+      backgroundImage: 'url("https://source.unsplash.com/ylHc_HR-MQQ/800x600")'
+    },
     backgroundRepeat: 'no-repeat',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
     backgroundSize: 'cover'
