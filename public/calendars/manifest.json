@@ -3,46 +3,47 @@
   "calendars": [
     {
       "name": "Eastern Cape",
-      "file": "EASTERN CAPE Beekeeping Forage Calendar 2020.pdf",
+      "file": "Eastern Cape SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
-      "name": "Freestate",
-      "file": "FREESTATE Beekeeping Forage Calendar 2020.pdf",
+      "name": "Free State",
+      "file": "FreeState SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
       "name": "Gauteng",
-      "file": "GAUTENG Beekeeping Forage Calendar 2020.pdf",
+      "file": "Gauteng SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
-      "name": "KZN",
-      "file": "KZN Beekeeping Forage Calendar 2020.pdf",
+      "name": "KwaZulu-Natal",
+      "file": "KwaZulu Natal SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
       "name": "Limpopo",
-      "file": "LIMPOPO Beekeeping Forage Calendar 2020.pdf",
+      "file": "Limpopo SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
       "name": "Mpumalanga",
-      "file": "MPUMALANGA Beekeeping Forage Calendar 2020.pdf",
+      "file": "Mpumalanga SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
+      "additionalInfo": {}
+    },
+    {
+      "name": "North West",
+      "file": "NorthWest SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
       "name": "Northern Cape",
-      "file": "NORTHERN CAPE Beekeeping Forage Calendar 2020.pdf",
-      "additionalInfo": {}
-    },{
-      "name": "North West",
-      "file": "NORTH WEST Beekeeping Forage Calendar 2020.pdf",
+      "file": "Northern Cape SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     },
     {
       "name": "Western Cape",
-      "file": "WESTERN CAPE Beekeeping Forage Calendar 2020.pdf",
+      "file": "WesternCape SA BEEKEEPING FORAGE CALENDAR 2020 - Draft 2.pdf",
       "additionalInfo": {}
     }
   ]
