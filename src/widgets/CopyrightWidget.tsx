@@ -17,8 +17,8 @@ export default function CopyrightWidget(props: { smallScreen: boolean }) {
     <Box marginY={4} className={classes.container}>
       <Typography variant="body2" color="textSecondary" align="center" style={{ userSelect: 'none' }}>
         {'Copyright © '}
-        <Link color="inherit" href="/">
-          Beekeeper.co.za
+        <Link color="inherit" href="mailto:riaan@beekeeper.co.za" target="_blank">
+          Beekeeping SA(Pty)Ltd
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

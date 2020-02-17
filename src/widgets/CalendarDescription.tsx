@@ -6,7 +6,7 @@ import HeadingWidget from './HeadingWidget';
 export default function CalendarDescription() {
   return (
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
-      <HeadingWidget>The South African Beeforage Calender</HeadingWidget>
+      <HeadingWidget>The South African Beekeeping Forage Calender</HeadingWidget>
       <TextWidget>
         <b>-Optimising your Beekeeping potential-</b> <br />
         Are you familiar with the seasonal forage opportunities in your area? Get a sense of the traditional and

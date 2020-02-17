@@ -29,8 +29,8 @@ export default function QuoteWidget(props: { largeScreen: boolean; breakpoint: b
       component={Paper}
       className={`${classes.paper} ${props.breakpoint ? classes.paperFixed : ''}`}>
       <Typography component={'h5'} variant={props.largeScreen ? 'body2' : 'caption'} className={classes.quote}>
-        "Beekeepers need to know when to best move their hive to take advantage of a particular forage source depending
-        on whether they wish to focus on honey production or strengthening their colonies." <br />-{' '}
+        "Beekeepers need to know when to best move their hives to take advantage of a particular forage source depending
+        on whether they wish to focus on honey production or strengthening their colonies." <br />-
         <b>Dr. Tlou Samuel Masehela</b>
       </Typography>
     </Box>
