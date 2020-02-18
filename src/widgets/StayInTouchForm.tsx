@@ -5,11 +5,8 @@ import ButtonWidget from './ButtonWidget';
 import HeadingWidget from './HeadingWidget';
 import TextWidget from './TextWidget';
 import Grid from '@material-ui/core/Grid';
-
-const Bearer = require('@bearer/node')(process.env.REACT_APP_BEARER_API_KEY);
-const spreadsheetId = process.env.REACT_APP_SHEET_ID;
-const authToken = process.env.REACT_APP_GOOGLE_AUTH_ID;
-const gsheet = Bearer.integration('google_sheets');
+import { Snackbar } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -20,50 +17,81 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+enum FORM_FIELD {
+  FULLNAME = 'entry.2005620554',
+  EMAIL = 'entry.1045781291',
+  PROVINCE = 'entry.1586434264'
+}
+
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfTUaSMZXEhqwn5WftAXgNS278p97sTyclMrJ8Tb8bqQjMs3Q/formResponse';
+
 export default function StayInTouchForm(props: { province: string }) {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
 
-  const postToGoogleSheets = (values: string[]) => {
-    gsheet
-      .auth(authToken)
-      .post(`${spreadsheetId}/values/A1:append`, {
-        body: { values: [values] },
-        query: { valueInputOption: 'RAW' }
-      })
-      .then(() => {
-        console.log('Saved!');
-      });
-  };
+  const nameInputRef: React.RefObject<HTMLInputElement> = React.createRef();
+  const emailInputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    postToGoogleSheets([fullname, props.province || '', email]);
-    setEmail('');
-    setFullname('');
+  const blurInputs = () => {
+    if (nameInputRef.current) {
+      nameInputRef.current.blur();
+    }
+    if (emailInputRef.current) {
+      emailInputRef.current.blur();
+    }
   };
 
   return (
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
+      <iframe
+        title={'submitted'}
+        name="hidden_iframe"
+        id="hidden_iframe"
+        style={{ display: 'none' }}
+        onLoad={event => {
+          if (submitted) {
+            console.log('Submitted');
+            setOpen(true);
+            blurInputs();
+          }
+        }}
+      />
       <HeadingWidget>Stay updated</HeadingWidget>
       <TextWidget>
         Complete your contact details to receive regular updates via email from the beekeeping community.
       </TextWidget>
-      <form className={classes.form} onSubmit={handleSubmit}>
+      <form
+        className={classes.form}
+        action={FORM_URL}
+        method={'post'}
+        target={'hidden_iframe'}
+        onSubmit={event => {
+          setSubmitted(true);
+          setTimeout(() => {
+            setEmail('');
+            setFullname('');
+          }, 200);
+        }}>
         <TextField
+          inputProps={nameInputRef}
           variant="outlined"
           fullWidth={true}
           margin="normal"
           required
           id="fullname"
           label="Name and surname"
-          name="fullname"
+          name={FORM_FIELD.FULLNAME}
           size={'small'}
           value={fullname}
           onChange={e => setFullname(e.target.value)}
+          onFocus={event => setSubmitted(false)}
         />
         <TextField
+          inputRef={emailInputRef}
           variant="outlined"
           margin="normal"
           fullWidth={true}
@@ -71,12 +99,26 @@ export default function StayInTouchForm(props: { province: string }) {
           id="email"
           type={'email'}
           label="Email Address"
-          name="email"
+          name={FORM_FIELD.EMAIL}
           size={'small'}
           value={email}
           onChange={e => setEmail(e.target.value)}
+          onFocus={event => setSubmitted(false)}
+        />
+        <input
+          type={'text'}
+          value={props.province || 'n/a'}
+          name={FORM_FIELD.PROVINCE}
+          onChange={e => null}
+          style={{ display: 'none' }}
+          tabIndex={-1}
         />
         <ButtonWidget label={'Submit details'} type="submit" color={'primary'} />
+        <Snackbar open={open} autoHideDuration={6000} onClose={event => setOpen(false)}>
+          <Alert severity="success" onClose={event => setOpen(false)}>
+            Thank your for submitting your details
+          </Alert>
+        </Snackbar>
       </form>
     </Grid>
   );

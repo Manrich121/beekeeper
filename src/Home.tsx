@@ -77,16 +77,7 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
                 setProvince(selected);
               }}
             />
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSfTUaSMZXEhqwn5WftAXgNS278p97sTyclMrJ8Tb8bqQjMs3Q/viewform?embedded=true"
-              width={theme.spacing(60)}
-              height={600}
-              frameBorder={0}
-              marginHeight={0}
-              marginWidth={0}>
-              Loading…
-            </iframe>
-            {/*<StayInTouchForm province={province}*/}
+            <StayInTouchForm province={province} />
           </>
         }
       />
