@@ -24,10 +24,6 @@ jobs:
       uses: borales/actions-yarn@v2.0.0
       with:
         cmd: build # will run `yarn build` command
-      env:
-        REACT_APP_BEARER_API_KEY: ${{ secrets.REACT_APP_BEARER_API_KEY }}
-        REACT_APP_SHEET_ID: ${{ secrets.REACT_APP_SHEET_ID }}
-        REACT_APP_GOOGLE_AUTH_ID: ${{ secrets.REACT_APP_GOOGLE_AUTH_ID }}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
