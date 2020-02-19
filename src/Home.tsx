@@ -11,43 +11,46 @@ import DownloadWidget from './widgets/DownloadWidget';
 import { CalendarManifest } from './App';
 import QuoteWidget from './widgets/QuoteWidget';
 
+const IMAGE_URL = 'https://source.unsplash.com/ylHc_HR-MQQ';
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
-    position: 'relative'
+    height: '100vh'
   },
-  image: {
+  leftPanel: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundImage: 'url("https://source.unsplash.com/ylHc_HR-MQQ/800x1200")',
-    [theme.breakpoints.down('sm')]: {
-      backgroundImage: 'url("https://source.unsplash.com/ylHc_HR-MQQ/800x600")'
-    },
-    backgroundRepeat: 'no-repeat',
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-    backgroundSize: 'cover'
+    position: 'relative'
+  },
+  imageContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    overflow: 'hidden',
+    userSelect: 'none'
+  },
+  image: {
+    width: '100%',
+    userSelect: 'none'
   },
   paper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   },
+  logoContainer: {
+    [theme.breakpoints.up('md')]: {
+      position: 'absolute',
+      left: 0,
+      top: 0
+    },
+    opacity: 0.99
+  },
   logo: {
     width: '100%',
     borderRadius: 3
-  },
-  title: {
-    userSelect: 'none',
-    fontWeight: 900,
-    color: theme.palette.text.hint,
-    letterSpacing: 2
-  },
-  subtitle: {
-    color: theme.palette.text.hint,
-    fontWeight: 500,
-    textTransform: 'uppercase',
-    userSelect: 'none'
   }
 }));
 
@@ -60,11 +63,23 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
       <CssBaseline />
-      <Grid item xs={12} md={6} className={classes.image}>
-        <Box marginX={2}>
-          <img alt={'logo'} src={'bee_logo.png'} className={classes.logo} />
-        </Box>
-        <QuoteWidget largeScreen={matches} breakpoint={useMediaQuery(theme.breakpoints.up('md'))} />
+      <Grid item xs={12} md={6} className={classes.leftPanel}>
+        <div className={classes.imageContainer}>
+          <a
+            href={`${IMAGE_URL}/800x1600`}
+            onClick={event => event.preventDefault()}
+            data-srcset={`${IMAGE_URL}/800x600 800w, ${IMAGE_URL}/800x1600 1200w`}
+            data-sizes="100vw"
+            className={'progressive replace ' + classes.image}>
+            <img src={`${IMAGE_URL}/80x160`} className={'preview ' + classes.image} alt="image" />
+          </a>
+        </div>
+        <div>
+          <Box marginX={2} className={classes.logoContainer}>
+            <img alt={'logo'} src={'bee_logo.png'} className={classes.logo} />
+          </Box>
+          <QuoteWidget largeScreen={matches} />
+        </div>
       </Grid>
       <ContentPanel
         slot1={<CalendarDescription />}

@@ -5,16 +5,8 @@ import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function CopyrightWidget(props: { smallScreen: boolean }) {
-  const classes = makeStyles(theme => ({
-    container: {
-      display: 'flex',
-      flexDirection: props.smallScreen ? 'column' : 'row',
-      alignItems: 'center'
-    }
-  }))();
-
   return (
-    <Box marginY={4} className={classes.container}>
+    <Box marginY={4}>
       <Typography variant="body2" color="textSecondary" align="center" style={{ userSelect: 'none' }}>
         {'Copyright © '}
         <Link color="inherit" href="mailto:riaan@beekeeper.co.za" target="_blank">
