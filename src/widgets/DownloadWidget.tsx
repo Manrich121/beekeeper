@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ButtonWidget from './ButtonWidget';
-import { BASE_CALENDARS_PATH, CalendarManifest } from '../App';
+import { BASE_CALENDAR_URL, CalendarManifest } from '../App';
 
 export default function DownloadWidget(props: {
   manifest: CalendarManifest | null;
@@ -45,7 +45,7 @@ export default function DownloadWidget(props: {
       return '';
     }
     const prov = props.manifest.calendars.find(c => c.name === props.province);
-    return prov ? `${BASE_CALENDARS_PATH}/${prov.file}` : '';
+    return prov ? `${BASE_CALENDAR_URL}/${prov.file}` : '';
   };
 
   return (
@@ -66,7 +66,14 @@ export default function DownloadWidget(props: {
         label={'Download Calendar'}
         disabled={!(props.manifest && props.province)}
         style={{ alignSelf: 'center' }}>
-        <a href={resolveFilePath()} download className={classes.button} style={{ position: 'absolute' }} />
+        <a
+          href={resolveFilePath()}
+          download
+          className={classes.button}
+          style={{ position: 'absolute' }}
+          target={'_blank'}
+          rel={'noopener noreferrer'}
+        />
       </ButtonWidget>
     </Grid>
   );
