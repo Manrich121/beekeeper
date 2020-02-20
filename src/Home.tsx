@@ -82,9 +82,9 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
         </div>
       </Grid>
       <ContentPanel
-        slot1={<CalendarDescription />}
-        slot2={
+        slot1={
           <>
+            <CalendarDescription />
             <DownloadWidget
               manifest={props.manifest}
               province={province}
@@ -92,9 +92,9 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
                 setProvince(selected);
               }}
             />
-            <StayInTouchForm province={province} />
           </>
         }
+        slot2={<StayInTouchForm province={province} />}
       />
     </Grid>
   );
