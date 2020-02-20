@@ -3,8 +3,9 @@ import Container from '@material-ui/core/Container';
 import Home from './Home';
 import './styles/_index.css';
 
-const CDN_URL = 'https://beekeeper.filmseason.co.za';
-export const BASE_CALENDAR_URL = `${CDN_URL}/calendars`;
+const CDN_URL = process.env.REACT_APP_CDN_URL;
+const BASE_CALENDAR_PATH = 'calendars';
+export const BASE_CALENDAR_URL = `${CDN_URL}/${BASE_CALENDAR_PATH}`;
 
 export type Calendar = {
   name: string;
