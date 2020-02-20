@@ -1,4 +1,3 @@
-import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonWidget from './ButtonWidget';
@@ -7,6 +6,7 @@ import TextWidget from './TextWidget';
 import Grid from '@material-ui/core/Grid';
 import { Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import TextFieldWidget from './TextFieldWidget';
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -23,8 +23,7 @@ enum FORM_FIELD {
   PROVINCE = 'entry.1586434264'
 }
 
-const FORM_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSfTUaSMZXEhqwn5WftAXgNS278p97sTyclMrJ8Tb8bqQjMs3Q/formResponse';
+const FORM_URL = process.env.REACT_APP_GFORM_URL;
 
 export default function StayInTouchForm(props: { province: string }) {
   const [fullname, setFullname] = useState('');
@@ -76,31 +75,23 @@ export default function StayInTouchForm(props: { province: string }) {
             setFullname('');
           }, 200);
         }}>
-        <TextField
+        <TextFieldWidget
           inputProps={nameInputRef}
-          variant="outlined"
-          fullWidth={true}
-          margin="normal"
           required
           id="fullname"
           label="Name and surname"
           name={FORM_FIELD.FULLNAME}
-          size={'small'}
           value={fullname}
           onChange={e => setFullname(e.target.value)}
           onFocus={event => setSubmitted(false)}
         />
-        <TextField
+        <TextFieldWidget
           inputRef={emailInputRef}
-          variant="outlined"
-          margin="normal"
-          fullWidth={true}
           required
           id="email"
           type={'email'}
           label="Email Address"
           name={FORM_FIELD.EMAIL}
-          size={'small'}
           value={email}
           onChange={e => setEmail(e.target.value)}
           onFocus={event => setSubmitted(false)}

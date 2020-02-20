@@ -24,6 +24,9 @@ jobs:
       uses: borales/actions-yarn@v2.0.0
       with:
         cmd: build # will run `yarn build` command
+      env:
+        REACT_APP_CDN_URL: ${{ secrets.REACT_APP_CDN_URL }}
+        REACT_APP_GFORM_URL: ${{ secrets.REACT_APP_GFORM_URL }}
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3

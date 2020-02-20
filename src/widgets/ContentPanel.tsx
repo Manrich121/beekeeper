@@ -35,7 +35,7 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
 
   const getSlot2 = (): JSX.Element | null => {
     if (props.slot2) {
-      return <Box mt={2}>{props.slot2}</Box>;
+      return <Box mt={4}>{props.slot2}</Box>;
     }
     return null;
   };
