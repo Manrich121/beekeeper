@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: '#E6BC33'
     }
+  },
+  buttonlabel: {
+    textShadow: `1px 1px 1px rgba(0,0,0,0.2)`
   }
 }));
 
@@ -23,7 +26,13 @@ export interface ButtonWidgetProps extends ButtonProps {
 export default function ButtonWidget(props: ButtonWidgetProps) {
   const classes = useStyles();
   return (
-    <Button {...props} variant="contained" color={props.color || 'primary'} fullWidth={true} className={classes.button}>
+    <Button
+      {...props}
+      variant="contained"
+      color={props.color || 'primary'}
+      fullWidth={true}
+      className={classes.button}
+      classes={props.disabled ? {} : { label: classes.buttonlabel }}>
       {props.label}
       {props.children}
     </Button>

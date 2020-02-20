@@ -72,7 +72,7 @@ export default function DownloadWidget(props: {
           className={classes.button}
           style={{ position: 'absolute' }}
           target={'_blank'}
-          rel={'noopener noreferrer'}
+          rel="noopener noreferrer"
         />
       </ButtonWidget>
     </Grid>
