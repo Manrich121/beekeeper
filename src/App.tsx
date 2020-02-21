@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Home from './Home';
 import './styles/_index.css';
+import { getJSON } from './utils';
 
 const CDN_URL = process.env.REACT_APP_CDN_URL;
 const BASE_CALENDAR_PATH = 'calendars';
@@ -17,30 +18,15 @@ export type CalendarManifest = {
   calendars: Calendar[];
 };
 
-var getJSON = function(url: string, callback: (err: any, data: any) => void) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.responseType = 'json';
-  xhr.onload = function() {
-    var status = xhr.status;
-    if (status === 200) {
-      callback(null, xhr.response);
-    } else {
-      callback(status, xhr.response);
-    }
-  };
-  xhr.send();
-};
-
 export default function App() {
   let retries = 5;
   const [manifest, setManifest] = useState(null);
 
   if (manifest == null && retries > 0) {
-    getJSON(`${CDN_URL}/manifest.json`, yourCallBackFunction);
+    getJSON(`${CDN_URL}/manifest.json`, manifestCallback);
   }
 
-  function yourCallBackFunction(err: number, data: any) {
+  function manifestCallback(err: number, data: any) {
     if (err) {
       //Do something with the error
       console.error('Fetch manifest failed:', err, data);

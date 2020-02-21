@@ -4,6 +4,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ButtonWidget from './ButtonWidget';
 import { BASE_CALENDAR_URL, CalendarManifest } from '../App';
+import { showFile } from '../utils';
 
 export default function DownloadWidget(props: {
   manifest: CalendarManifest | null;
@@ -40,12 +41,19 @@ export default function DownloadWidget(props: {
     });
   };
 
-  const resolveFilePath = (): string => {
+  const resolveFileName = (): string => {
     if (!props.manifest) {
-      return '';
+      return 'MANIFEST_NOT_LOADED';
     }
     const prov = props.manifest.calendars.find(c => c.name === props.province);
-    return prov ? `${BASE_CALENDAR_URL}/${prov.file}` : '';
+    return prov ? `${prov.file}` : 'NOT_FOUND';
+  };
+
+  const handleClick = () => {
+    const filename = resolveFileName();
+    fetch(`${BASE_CALENDAR_URL}/${filename}`, {})
+      .then(r => r.blob())
+      .then(blob => showFile(blob, { outputFileName: filename }));
   };
 
   return (
@@ -65,16 +73,9 @@ export default function DownloadWidget(props: {
         color={'primary'}
         label={'Download Calendar'}
         disabled={!(props.manifest && props.province)}
-        style={{ alignSelf: 'center' }}>
-        <a
-          href={resolveFilePath()}
-          download
-          className={classes.button}
-          style={{ position: 'absolute' }}
-          target={'_blank'}
-          rel="noopener noreferrer"
-        />
-      </ButtonWidget>
+        style={{ alignSelf: 'center' }}
+        onClick={handleClick}
+      />
     </Grid>
   );
 }
