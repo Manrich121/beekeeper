@@ -14,8 +14,6 @@ export function showFile(blob: Blob, options: { outputFileName?: string } = {}) 
   // Create a link pointing to the ObjectURL containing the blob.
   const data = window.URL.createObjectURL(newBlob);
   let link = document.createElement('a');
-  console.log('newBlob', newBlob);
-  console.log('data', data);
   link.href = data;
   link.download = options.outputFileName || 'South African Beekeeper Forage Calendar 2020.pdf';
   link.click();
