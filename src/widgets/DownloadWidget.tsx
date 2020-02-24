@@ -1,16 +1,18 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { CircularProgress, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ButtonWidget from './ButtonWidget';
 import { BASE_CALENDAR_URL, CalendarManifest } from '../App';
 import { showFile } from '../utils';
+import { yellow } from '@material-ui/core/colors';
 
 export default function DownloadWidget(props: {
   manifest: CalendarManifest | null;
   province: string;
   onProvinceChange: (selected: string) => void;
 }) {
+  const [loading, setLoading] = React.useState(false);
   const classes = makeStyles(theme => ({
     formControl: {
       margin: theme.spacing(1),
@@ -25,6 +27,14 @@ export default function DownloadWidget(props: {
     button: {
       width: '100%',
       height: '100%'
+    },
+    buttonProgress: {
+      color: yellow[600],
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12
     }
   }))();
 
@@ -49,11 +59,16 @@ export default function DownloadWidget(props: {
     return prov ? `${prov.file}` : 'NOT_FOUND';
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    if (loading) {
+      return;
+    }
     const filename = resolveFileName();
-    fetch(`${BASE_CALENDAR_URL}/${filename}`, {})
-      .then(r => r.blob())
-      .then(blob => showFile(blob, { outputFileName: filename }));
+    setLoading(true);
+    const response = await fetch(`${BASE_CALENDAR_URL}/${filename}`, {});
+    const blob = await response.blob();
+    await showFile(blob, { outputFileName: filename });
+    setLoading(false);
   };
 
   return (
@@ -72,10 +87,11 @@ export default function DownloadWidget(props: {
       <ButtonWidget
         color={'primary'}
         label={'Download Calendar'}
-        disabled={!(props.manifest && props.province)}
+        disabled={!(props.manifest && props.province) || loading}
         style={{ alignSelf: 'center' }}
-        onClick={handleClick}
-      />
+        onClick={handleClick}>
+        {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+      </ButtonWidget>
     </Grid>
   );
 }

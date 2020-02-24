@@ -71,7 +71,7 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
             data-srcset={`${IMAGE_URL}/800x600 800w, ${IMAGE_URL}/800x1600 1200w`}
             data-sizes="100vw"
             className={'progressive replace ' + classes.image}>
-            <img src={`${IMAGE_URL}/80x160`} className={'preview ' + classes.image} alt="cover" />
+            <img src={'cover_80x160.jpeg'} className={'preview ' + classes.image} alt="cover" />
           </a>
         </div>
         <div>
