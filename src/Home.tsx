@@ -10,6 +10,8 @@ import ContentPanel from './widgets/ContentPanel';
 import DownloadWidget from './widgets/DownloadWidget';
 import { CalendarManifest } from './App';
 import QuoteWidget from './widgets/QuoteWidget';
+import Typography from '@material-ui/core/Typography';
+import styled from '@emotion/styled';
 
 const IMAGE_URL = 'https://source.unsplash.com/ylHc_HR-MQQ';
 const useStyles = makeStyles(theme => ({
@@ -48,15 +50,24 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       position: 'absolute',
       left: 0,
+      right: 0,
       top: 0
     },
     opacity: 0.99
   },
-  logo: {
-    width: '100%',
-    borderRadius: 3
+  title: {
+    fontFamily: 'Bahnschrift Regular',
+    fontWeight: 500,
+    textAlign: 'center',
+    userSelect: 'none',
+    color: theme.palette.text.hint,
+    lineHeight: 1.1
   }
 }));
+
+const Year = styled.span<{ fontSize: string }>`
+  font-size: ${p => p.fontSize};
+`;
 
 export default function Home(props: { manifest: CalendarManifest | null }) {
   const [province, setProvince] = useState('');
@@ -78,12 +89,13 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
             <img src={'cover_80x160.jpeg'} className={'preview ' + classes.image} alt="cover" />
           </a>
         </div>
-        <div>
-          <Box marginX={2} className={classes.logoContainer}>
-            <img alt={'logo'} src={'bee_logo.png'} className={classes.logo} />
-          </Box>
-          <QuoteWidget largeScreen={matches} />
-        </div>
+        <Box mt={2} marginX={2} className={classes.logoContainer}>
+          <Typography component={'h1'} variant={matches ? 'h4' : 'h6'} className={classes.title}>
+            The SOUTH AFRICAN <Year fontSize={matches ? '64px' : '32px'}>2020</Year> <br />
+            BEEKEEPING FORAGE CALENDAR
+          </Typography>
+        </Box>
+        <QuoteWidget largeScreen={matches} />
       </Grid>
       <ContentPanel
         slot1={
