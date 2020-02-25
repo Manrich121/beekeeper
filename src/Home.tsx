@@ -33,7 +33,11 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     width: '100%',
-    userSelect: 'none'
+    height: '100%',
+    userSelect: 'none',
+    '& img': {
+      minHeight: '100%'
+    }
   },
   paper: {
     display: 'flex',
