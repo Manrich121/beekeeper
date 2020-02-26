@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('BAHNSCHRIFT.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Goudy Old Style';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Goudy Old Style Regular'), url('Goudy_Old_Style_Regular.ttf') format('truetype');
+}

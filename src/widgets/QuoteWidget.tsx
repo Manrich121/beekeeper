@@ -24,7 +24,8 @@ export default function QuoteWidget(props: { largeScreen: boolean }) {
       color: theme.palette.text.primary,
       textAlign: 'center',
       userSelect: 'none',
-      lineHeight: 1.2
+      lineHeight: 1.2,
+      fontStyle: 'italic'
     },
     name: {
       fontFamily: theme.typography.body1.fontFamily,
@@ -41,7 +42,7 @@ export default function QuoteWidget(props: { largeScreen: boolean }) {
         on whether they wish to focus on honey production or strengthening their colonies." <br />
       </Typography>
       <Typography component={'h5'} variant={props.largeScreen ? 'body2' : 'caption'}>
-        <b>Dr. Tlou Samuel Masehela</b>
+        - <b>Dr. Tlou Masehela</b> -
       </Typography>
     </Box>
   );

@@ -1,3 +1,5 @@
+@import '../fonts/_fonts.css';
+
 body {
     overscroll-behavior: none;
 }
