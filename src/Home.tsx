@@ -81,10 +81,8 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
       <Grid item xs={12} md={6} className={classes.leftPanel}>
         <div className={classes.imageContainer}>
           <a
-            href={`${IMAGE_URL}/800x1600`}
+            href={matches ? `${IMAGE_URL}/800x1600` : `${IMAGE_URL}/800x600`}
             onClick={event => event.preventDefault()}
-            data-srcset={`${IMAGE_URL}/800x600 800w, ${IMAGE_URL}/800x1600 1200w`}
-            data-sizes="100vw"
             className={'progressive replace ' + classes.image}>
             <img src={'cover_80x160.jpeg'} className={'preview ' + classes.image} alt="cover" />
           </a>
