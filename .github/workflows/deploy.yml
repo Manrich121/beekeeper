@@ -25,6 +25,7 @@ jobs:
       with:
         cmd: build # will run `yarn build` command
       env:
+        GENERATE_SOURCEMAP: false
         REACT_APP_CDN_URL: ${{ secrets.REACT_APP_CDN_URL }}
         REACT_APP_GFORM_URL: ${{ secrets.REACT_APP_GFORM_URL }}
 
