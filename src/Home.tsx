@@ -12,6 +12,7 @@ import { CalendarManifest } from './App';
 import QuoteWidget from './widgets/QuoteWidget';
 import Typography from '@material-ui/core/Typography';
 import styled from '@emotion/styled';
+import ProgressiveImage from 'react-progressive-image';
 
 const IMAGE_URL = 'https://source.unsplash.com/ylHc_HR-MQQ';
 const useStyles = makeStyles(theme => ({
@@ -80,12 +81,18 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
       <CssBaseline />
       <Grid item xs={12} md={6} className={classes.leftPanel}>
         <div className={classes.imageContainer}>
-          <a
-            href={matches ? `${IMAGE_URL}/800x1600` : `${IMAGE_URL}/800x600`}
-            onClick={event => event.preventDefault()}
-            className={'progressive replace ' + classes.image}>
-            <img src={'cover_80x160.jpeg'} className={'preview ' + classes.image} alt="cover" />
-          </a>
+          <ProgressiveImage
+            src={matches ? `${IMAGE_URL}/800x1600` : `${IMAGE_URL}/800x600`}
+            placeholder={'cover_80x160.jpeg'}>
+            {(src, loading) => (
+              <img
+                src={src}
+                style={{ filter: loading ? 'blur(10px)' : 'none', transition: 'filter 2s' }}
+                className={'preview ' + classes.image}
+                alt="cover"
+              />
+            )}
+          </ProgressiveImage>
         </div>
         <Box mt={2} marginX={2} className={classes.logoContainer}>
           <Typography component={'h1'} variant={matches ? 'h4' : 'h6'} className={classes.title}>
