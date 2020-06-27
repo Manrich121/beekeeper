@@ -4,10 +4,24 @@ import CopyrightWidget from './CopyrightWidget';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import ButtonWidget from './ButtonWidget';
 
 export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNode }) {
   const classes = makeStyles(theme => ({
+    menuButton: {
+      marginRight: theme.spacing(2)
+    },
+    bar: {
+      backgroundColor: theme.palette.secondary.main
+    },
+    toolbar: {
+      display: 'flex'
+    },
+    navTitle: { flexGrow: 1, userSelect: 'none', textAlign: 'center', lineHeight: 1.2 },
+    button: {},
     contentPanel: {
       display: 'flex',
       flexDirection: 'column',
@@ -26,7 +40,8 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
     },
     icon: {
       height: 40,
-      width: 40
+      width: 40,
+      marginRight: 8
     }
   }))();
 
@@ -44,7 +59,21 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
     <Grid item xs={12} md={6} component={Paper} elevation={6} square className={classes.contentPanel}>
       <Box className={classes.paper} marginX={matches ? 10 : 5}>
         <Box mt={matches ? 4 : 3} className={classes.content}>
-          <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
+          <AppBar position="static" className={classes.bar}>
+            <Toolbar className={classes.toolbar} style={{ flexDirection: matches ? 'row' : 'column' }}>
+              <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
+              <Typography variant="subtitle1" className={classes.navTitle}>
+                Join our Beekeeping Forum: A knowledge networking revolution
+              </Typography>
+              <ButtonWidget
+                className={classes.button}
+                color="primary"
+                fullwidth={false}
+                href="https://forum.beekeeper.co.za">
+                Go to forum
+              </ButtonWidget>
+            </Toolbar>
+          </AppBar>
           {props.slot1}
         </Box>
         {getSlot2()}

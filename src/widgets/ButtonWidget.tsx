@@ -5,13 +5,14 @@ import React, { ReactNode } from 'react';
 const useStyles = makeStyles(theme => ({
   button: {
     textTransform: 'uppercase',
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(2, 0, 2),
     color: theme.palette.text.hint,
     fontWeight: 600,
     maxWidth: theme.spacing(25),
     '&:hover': {
       backgroundColor: '#E6BC33'
-    }
+    },
+    textAlign: 'center'
   },
   buttonlabel: {
     textShadow: `1px 1px 1px rgba(0,0,0,0.2)`
@@ -21,6 +22,8 @@ const useStyles = makeStyles(theme => ({
 export interface ButtonWidgetProps extends ButtonProps {
   label?: string;
   children?: ReactNode;
+  fullwidth?: boolean;
+  className?;
 }
 
 export default function ButtonWidget(props: ButtonWidgetProps) {
@@ -30,8 +33,8 @@ export default function ButtonWidget(props: ButtonWidgetProps) {
       {...props}
       variant="contained"
       color={props.color || 'primary'}
-      fullWidth={true}
-      className={classes.button}
+      fullWidth={props.fullwidth ?? true}
+      className={`${props.className} ${classes.button}`}
       classes={props.disabled ? {} : { label: classes.buttonlabel }}>
       {props.label}
       {props.children}
