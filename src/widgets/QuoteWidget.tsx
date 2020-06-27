@@ -30,8 +30,8 @@ export default function QuoteWidget(props: { largeScreen: boolean }) {
     name: {
       fontFamily: theme.typography.body1.fontFamily,
       fontSize: theme.typography.body2.fontSize,
-      marginTop: theme.spacing(2),
-      userSelect: 'none'
+      userSelect: 'none',
+      paddingBottom: theme.spacing(1)
     }
   }))();
 
@@ -41,7 +41,7 @@ export default function QuoteWidget(props: { largeScreen: boolean }) {
         "Beekeepers need to know when to best move their hives to take advantage of a particular forage source depending
         on whether they wish to focus on honey production or strengthening their colonies." <br />
       </Typography>
-      <Typography component={'h5'} variant={props.largeScreen ? 'body2' : 'caption'}>
+      <Typography component={'h5'} variant={props.largeScreen ? 'body2' : 'caption'} className={classes.name}>
         - <b>Dr. Tlou Masehela</b> -
       </Typography>
     </Box>

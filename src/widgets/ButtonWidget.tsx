@@ -23,6 +23,7 @@ export interface ButtonWidgetProps extends ButtonProps {
   label?: string;
   children?: ReactNode;
   fullwidth?: boolean;
+  className?;
 }
 
 export default function ButtonWidget(props: ButtonWidgetProps) {
@@ -33,7 +34,7 @@ export default function ButtonWidget(props: ButtonWidgetProps) {
       variant="contained"
       color={props.color || 'primary'}
       fullWidth={props.fullwidth ?? true}
-      className={classes.button}
+      className={`${props.className} ${classes.button}`}
       classes={props.disabled ? {} : { label: classes.buttonlabel }}>
       {props.label}
       {props.children}

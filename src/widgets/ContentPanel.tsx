@@ -21,11 +21,7 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
       display: 'flex'
     },
     navTitle: { flexGrow: 1, userSelect: 'none', textAlign: 'center', lineHeight: 1.2 },
-    button: {
-      backgroundColor: theme.palette.primary.light,
-      marginLeft: 'auto',
-      marginRight: 'auto'
-    },
+    button: {},
     contentPanel: {
       display: 'flex',
       flexDirection: 'column',

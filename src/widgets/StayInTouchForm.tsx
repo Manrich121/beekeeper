@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
+  },
+  button: {
+    margin: theme.spacing(3, 0, 2)
   }
 }));
 
@@ -104,7 +107,7 @@ export default function StayInTouchForm(props: { province: string }) {
           style={{ display: 'none' }}
           tabIndex={-1}
         />
-        <ButtonWidget label={'Submit details'} type="submit" color={'primary'} />
+        <ButtonWidget label={'Submit details'} type="submit" color={'primary'} className={classes.button} />
         <Snackbar open={open} autoHideDuration={6000} onClose={event => setOpen(false)}>
           <Alert severity="success" onClose={event => setOpen(false)}>
             Thank your for submitting your details
