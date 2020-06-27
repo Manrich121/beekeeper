@@ -18,12 +18,9 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
       backgroundColor: theme.palette.secondary.main
     },
     toolbar: {
-      '.MuiToolbar-gutters': {
-        paddingLeft: 16,
-        paddingRight: 16
-      }
+      display: 'flex'
     },
-    navTitle: { flexGrow: 1, userSelect: 'none' },
+    navTitle: { flexGrow: 1, userSelect: 'none', textAlign: 'center', lineHeight: 1.2 },
     button: {
       backgroundColor: theme.palette.primary.light,
       marginLeft: 'auto',
@@ -67,7 +64,7 @@ export default function ContentPanel(props: { slot1: ReactNode; slot2?: ReactNod
       <Box className={classes.paper} marginX={matches ? 10 : 5}>
         <Box mt={matches ? 4 : 3} className={classes.content}>
           <AppBar position="static" className={classes.bar}>
-            <Toolbar className={classes.toolbar}>
+            <Toolbar className={classes.toolbar} style={{ flexDirection: matches ? 'row' : 'column' }}>
               <img alt="icon" src={'honeycombs.png'} className={classes.icon} />
               <Typography variant="subtitle1" className={classes.navTitle}>
                 Join our Beekeeping Forum: A knowledge networking revolution
