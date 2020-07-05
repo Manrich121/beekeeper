@@ -6,13 +6,13 @@ import HeadingWidget from './HeadingWidget';
 export default function CalendarDescription() {
   return (
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
-      <HeadingWidget>The South African Beekeeping Forage Calender</HeadingWidget>
+      <HeadingWidget>The South African Bee Forage Calendar</HeadingWidget>
       <TextWidget>
         <b>-Optimising your Beekeeping potential-</b> <br />
         Are you familiar with the seasonal forage opportunities in your area? Get a sense of the traditional and
         changing migratory patterns our beekeepers employ to stay ahead of the nectar flow windows. <br /> <br />
         <b>How much does it cost?</b> <br />
-        Absolutely and always free. The calender is made possible by direct input from our beekeeping industry.
+        Absolutely and always free. The calendar is made possible by direct input from our beekeeping industry.
       </TextWidget>
     </Grid>
   );

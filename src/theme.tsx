@@ -8,7 +8,7 @@ const theme = createMuiTheme({
   },
   palette: {
     text: {
-      hint: '#FFFFFF'
+      hint: '#616f65'
     },
     primary: {
       main: '#FFD039'
