@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import styled from '@emotion/styled';
 import ProgressiveImage from 'react-progressive-image';
 
-const IMAGE_URL = 'https://source.unsplash.com/ylHc_HR-MQQ';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh'
@@ -36,7 +35,6 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     width: '100%',
-    height: '100%',
     userSelect: 'none',
     '& img': {
       minHeight: '100%'
@@ -54,7 +52,12 @@ const useStyles = makeStyles(theme => ({
       right: 0,
       top: 0
     },
-    opacity: 0.99
+    [theme.breakpoints.down('md')]: {
+      alignSelf: 'end'
+    },
+    opacity: 0.99,
+    backgroundColor: `rgba(255, 255, 255, 0.4)`,
+    backdropFilter: `blur(10px)`
   },
   title: {
     fontFamily: 'Bahnschrift Regular',
@@ -74,7 +77,8 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
   const [province, setProvince] = useState('');
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const widthMatches = useMediaQuery('(min-width:500px)');
 
   return (
     <Grid container component="main" className={classes.root} direction={'row'}>
@@ -82,8 +86,8 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
       <Grid item xs={12} md={6} className={classes.leftPanel}>
         <div className={classes.imageContainer}>
           <ProgressiveImage
-            src={matches ? `${IMAGE_URL}/800x1600` : `${IMAGE_URL}/800x600`}
-            placeholder={'cover_80x160.jpeg'}>
+            src={matches ? `cover2.jpeg` : widthMatches ? 'cover2_mobile_landscape.jpeg' : `cover2_mobile.jpeg`}
+            placeholder={matches ? 'cover2_small.jpeg' : 'cover2_mobile_small.jpeg'}>
             {(src, loading) => (
               <img
                 src={src}
@@ -96,8 +100,8 @@ export default function Home(props: { manifest: CalendarManifest | null }) {
         </div>
         <Box mt={2} marginX={2} className={classes.logoContainer}>
           <Typography component={'h1'} variant={matches ? 'h4' : 'h6'} className={classes.title}>
-            The SOUTH AFRICAN <Year fontSize={matches ? '64px' : '32px'}>2020</Year> <br />
-            BEEKEEPING FORAGE CALENDAR
+            The South African <Year fontSize={matches ? '64px' : '32px'}>2020</Year> <br />
+            Bee Forage Calendar
           </Typography>
         </Box>
         <QuoteWidget largeScreen={matches} />

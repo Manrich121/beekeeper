@@ -15,7 +15,7 @@ export function showFile(blob: Blob, options: { outputFileName?: string } = {}) 
   const data = window.URL.createObjectURL(newBlob);
   let link = document.createElement('a');
   link.href = data;
-  link.download = options.outputFileName || 'South African Beekeeper Forage Calendar 2020.pdf';
+  link.download = options.outputFileName || 'South African Bee Forage Calendar 2020.pdf';
   link.click();
   setTimeout(function() {
     // For Firefox it is necessary to delay revoking the ObjectURL
