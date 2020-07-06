@@ -8,7 +8,7 @@ export default function CalendarDescription() {
     <Grid container alignContent={'center'} justify={'center'} direction={'column'}>
       <HeadingWidget>The South African Bee Forage Calendar</HeadingWidget>
       <TextWidget>
-        <b>-Optimising your Beekeeping potential-</b> <br />
+        <b>-Optimizing your Beekeeping potential-</b> <br />
         Are you familiar with the seasonal forage opportunities in your area? Get a sense of the traditional and
         changing migratory patterns our beekeepers employ to stay ahead of the nectar flow windows. <br /> <br />
         <b>How much does it cost?</b> <br />
